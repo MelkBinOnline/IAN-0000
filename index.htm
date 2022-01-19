@@ -193,7 +193,16 @@
         }
 
         function onLoad() {
-            var elem = document.documentElement;
+            
+            if (isOVRWeb()){
+                showPreloader();
+                loadTour();
+                return;
+            }
+            
+            showPreloader();
+
+            let elem = document.documentElement;
             function openFullscreen() {
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen();
@@ -203,14 +212,8 @@
                     elem.msRequestFullscreen();
                 }
             }
-            if (isOVRWeb()){
-                showPreloader();
-                loadTour();
-                return;
-            }
-
-            showPreloader();
-loadTour()
+            
+            loadTour()
         }
 
         function playVideo(video) {
